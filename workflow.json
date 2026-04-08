@@ -1,0 +1,244 @@
+{
+  "id": "published-wf-template-tpl-180218537-0",
+  "name": "Quality Check Scheduler for High Mix Low Volume",
+  "description": "Quality Check Scheduler for High Mix Low Volume simulates BOMs and inspects inventory; applies decision gates and observability; orchestrates via PLM to increase OEE.",
+  "industry": "Manufacturing",
+  "pattern": "Iterative-Improve",
+  "complexity": "Intermediate",
+  "tags": [
+    "supply-chain",
+    "mes",
+    "oee",
+    "iterative-improve",
+    "manufacturing"
+  ],
+  "steps": [
+    {
+      "id": "intake",
+      "name": "Station Intake",
+      "description": "Collect, validate and normalize PLC signals from QMS; attach a runId and timestamp for traceability."
+    },
+    {
+      "id": "propose-0",
+      "name": "Propose",
+      "description": "Execute propose phase for the Iterative-Improve pattern: persist interim state, enforce guardrails, and emit structured JSON results."
+    },
+    {
+      "id": "improve-1",
+      "name": "Improve",
+      "description": "Execute improve phase for the Iterative-Improve pattern: persist interim state, enforce guardrails, and emit structured JSON results."
+    },
+    {
+      "id": "defect-detection-0",
+      "name": "Defect Detection",
+      "description": "Defect Detection across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "maintenance-plan-1",
+      "name": "Maintenance Plan",
+      "description": "Maintenance Plan across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "traceability-2",
+      "name": "Traceability",
+      "description": "Traceability across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "replenishment-3",
+      "name": "Replenishment",
+      "description": "Replenishment across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "setup-optimization-4",
+      "name": "Setup Optimization",
+      "description": "Setup Optimization across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "dispatch-5",
+      "name": "Dispatch",
+      "description": "Dispatch across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "finalize",
+      "name": "Maintenance Ticket",
+      "description": "Assemble final payload with status, artifacts, KPIs and audit trail; store to APS; return response JSON for the client."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "intake",
+      "type": "agentbridge",
+      "data": {
+        "label": "Station Intake",
+        "description": "Collect, validate and normalize PLC signals from QMS; attach a runId and timestamp for traceability.",
+        "nodeType": "input",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 0,
+        "y": 100
+      }
+    },
+    {
+      "id": "propose-0",
+      "type": "agentbridge",
+      "data": {
+        "label": "Propose",
+        "description": "Execute propose phase for the Iterative-Improve pattern: persist interim state, enforce guardrails, and emit structured JSON results.",
+        "nodeType": "llm",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 300,
+        "y": 100
+      }
+    },
+    {
+      "id": "improve-1",
+      "type": "agentbridge",
+      "data": {
+        "label": "Improve",
+        "description": "Execute improve phase for the Iterative-Improve pattern: persist interim state, enforce guardrails, and emit structured JSON results.",
+        "nodeType": "llm",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 600,
+        "y": 100
+      }
+    },
+    {
+      "id": "defect-detection-0",
+      "type": "agentbridge",
+      "data": {
+        "label": "Defect Detection",
+        "description": "Defect Detection across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "llm",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 900,
+        "y": 100
+      }
+    },
+    {
+      "id": "maintenance-plan-1",
+      "type": "agentbridge",
+      "data": {
+        "label": "Maintenance Plan",
+        "description": "Maintenance Plan across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "llm",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 1200,
+        "y": 100
+      }
+    },
+    {
+      "id": "traceability-2",
+      "type": "agentbridge",
+      "data": {
+        "label": "Traceability",
+        "description": "Traceability across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "llm",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 1500,
+        "y": 100
+      }
+    },
+    {
+      "id": "replenishment-3",
+      "type": "agentbridge",
+      "data": {
+        "label": "Replenishment",
+        "description": "Replenishment across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "llm",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 1800,
+        "y": 100
+      }
+    },
+    {
+      "id": "setup-optimization-4",
+      "type": "agentbridge",
+      "data": {
+        "label": "Setup Optimization",
+        "description": "Setup Optimization across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "llm",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 2100,
+        "y": 100
+      }
+    },
+    {
+      "id": "dispatch-5",
+      "type": "agentbridge",
+      "data": {
+        "label": "Dispatch",
+        "description": "Dispatch across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "llm",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 2400,
+        "y": 100
+      }
+    },
+    {
+      "id": "finalize",
+      "type": "agentbridge",
+      "data": {
+        "label": "Maintenance Ticket",
+        "description": "Assemble final payload with status, artifacts, KPIs and audit trail; store to APS; return response JSON for the client.",
+        "nodeType": "output",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 2700,
+        "y": 100
+      }
+    }
+  ],
+  "publishedAt": "2026-04-01T13:43:13.573Z",
+  "destination": "launchpad",
+  "deployments": 31,
+  "lastDeployed": "2026-04-01T13:43:13.573Z",
+  "configuration": {
+    "provider": "azure",
+    "region": "eastus",
+    "compute": "cpu-optimized"
+  },
+  "healthStatus": "healthy",
+  "deploymentCount": 12,
+  "githubRepo": "https://github.com/agentbridge/quality-check-scheduler-for-high-mix-low-volume",
+  "maintainer": "You",
+  "downloads": 412,
+  "rating": 4.609859437832032,
+  "createdAt": "2026-04-01T13:43:13.573Z",
+  "updatedAt": "2026-04-01T13:43:13.573Z",
+  "isPublished": true,
+  "isFeatured": false,
+  "deploymentMetadata": {
+    "publishedBy": "You",
+    "publishedAt": "2026-04-01T13:43:13.573Z",
+    "source": "Template Selection",
+    "version": "1.0.0"
+  }
+}

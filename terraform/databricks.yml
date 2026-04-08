@@ -1,0 +1,52 @@
+# Databricks Asset Bundle for Quality Check Scheduler for High Mix Low Volume
+# Deploy with: databricks bundle deploy -t <target>
+bundle:
+  name: ab-quality_check_scheduler_for_high_mix_low_volume
+
+variables:
+  model_endpoint:
+    default: "databricks-meta-llama-3-1-70b-instruct"
+  catalog:
+    default: "ab_agentbridge_quality_check_scheduler_for_high_mix_low_volume"
+  schema:
+    default: "workflow"
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: ${var.workspace_url}
+  staging:
+    mode: production
+    workspace:
+      host: ${var.workspace_url}
+    permissions:
+      - level: CAN_VIEW
+        group_name: users
+  prod:
+    mode: production
+    workspace:
+      host: ${var.workspace_url}
+    run_as:
+      service_principal_name: "ab-quality_check_scheduler_for_high_mix_low_volume-sp"
+    permissions:
+      - level: CAN_VIEW
+        group_name: users
+
+resources:
+  jobs:
+    workflow:
+      name: "ab-quality_check_scheduler_for_high_mix_low_volume"
+      max_concurrent_runs: 1
+      job_clusters:
+        - job_cluster_key: workflow_cluster
+          new_cluster:
+            spark_version: "15.4.x-scala2.12"
+            num_workers: 1
+            node_type_id: "${var.node_type_id}"
+            custom_tags:
+              managed_by: agentbridge
+              blueprint: "quality_check_scheduler_for_high_mix_low_volume"
+      tasks:
+
